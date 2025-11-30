@@ -1,37 +1,40 @@
-# Landing Page (Static)
+# Resume site (Next.js)
 
-This repository now contains a minimal static landing page you can host anywhere (GitHub Pages, Netlify, Vercel static sites, etc.). The Django project files were removed per the repo owner's request.
+This repository now contains a minimal Next.js app for your resume/landing page. It's set up for deployment on Vercel.
 
 How to edit
-- `index.html` — main landing page. Edit headings, paragraphs, and details directly.
-- `assets/css/style.css` — styles for the page.
-- `assets/images/placeholder.png` — replace with your profile image and update the `src` in `index.html`.
+- `pages/index.js` — the landing page content (headings, paragraph, image reference).
+- `public/images/placeholder.svg` — replace with your profile image (or upload another file and update the `src`).
+- `styles/globals.css` — global styles for the site.
 
-Preview locally
-1. From the repo root, run a simple static server (Python 3):
+Local development
+1. Install dependencies and run the dev server:
 
 ```bash
-python3 -m http.server 8000
-# then open http://localhost:8000 in a browser
+npm install
+npm run dev
+# then open http://localhost:3000
 ```
 
-Commit and push
-1. Stage and commit the changes:
+Build and run production locally
+```bash
+npm run build
+npm start
+```
 
+Vercel
+- The `vercel.json` configuration is set to build the Next.js app. Connect this repo to Vercel and it will auto-deploy on push to `main`.
+
+Commit and push
 ```bash
 git add .
-git commit -m "Replace Django app with static landing page"
+git commit -m "Scaffold Next.js landing page and update Vercel config"
 git push origin main
 ```
 
-Hosting
-- For GitHub Pages: enable Pages in repository settings and serve from `main` branch (root).
-- For Netlify/Vercel: connect the repo and use default build (no build needed for static files).
-
-If you want, I can:
-- add a contact form (static + Formspree or Netlify Forms)
-- scaffold multiple pages
-- commit the changes for you (I can prepare a commit message)
+Want more?
+- I can add a resume download link, projects section, or contact form.
+- I can also commit and push these changes for you if you want.
 # Resume-Blog (Django, Vercel PoC)
 
 A minimal Django project, ready to deploy on [Vercel](https://vercel.com/) and point a custom domain (e.g. sigdelsanjog.com.np).
