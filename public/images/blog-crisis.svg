@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="100%" height="100%" fill="#ffe6e6"/>
+  <polygon points="150,70 120,110 180,110" fill="#dc2626" opacity="0.3"/>
+  <circle cx="130" cy="120" r="4" fill="#dc2626"/>
+  <circle cx="170" cy="120" r="4" fill="#dc2626"/>
+  <text x="50%" y="160" font-size="16" text-anchor="middle" fill="#dc2626" font-family="Arial">Crisis Informatics</text>
+</svg>

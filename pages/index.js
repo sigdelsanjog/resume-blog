@@ -1,8 +1,11 @@
 import Image from 'next/image'
+import SideNavigation from '../components/SideNavigation'
 
 export default function Home() {
   return (
-    <main className="container">
+    <>
+      <SideNavigation />
+      <main className="container">
       <section className="hero">
         <div className="photo">
           <Image src="/images/Sanjog.jpeg" alt="Profile" width={260} height={260} />
@@ -25,5 +28,6 @@ export default function Home() {
         <p>Add more details here about background, projects, or your resume.</p>
       </section>
     </main>
+    </>
   )
 }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="100%" height="100%" fill="#fff5e6"/>
+  <rect x="120" y="60" width="60" height="40" rx="4" fill="#ff9500" opacity="0.3"/>
+  <circle cx="150" cy="120" r="8" fill="#ff9500"/>
+  <text x="50%" y="160" font-size="16" text-anchor="middle" fill="#ff9500" font-family="Arial">AI Healthcare</text>
+</svg>
