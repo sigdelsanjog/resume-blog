@@ -5,7 +5,7 @@ export default function Home() {
     <main className="container">
       <section className="hero">
         <div className="photo">
-          <Image src="/images/placeholder.png" alt="Profile" width={260} height={260} />
+          <Image src="/images/Sanjog.jpeg" alt="Profile" width={260} height={260} />
         </div>
         <div className="intro">
           <h1>Sanjog Sigdel</h1>
