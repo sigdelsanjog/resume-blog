@@ -1,12 +1,36 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import SideNavigation from '../components/SideNavigation'
 
 export default function Home() {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false)
+
+  useEffect(() => {
+    const checkNavState = () => {
+      const nav = document.querySelector('.side-nav')
+      if (nav) {
+        setIsNavCollapsed(nav.classList.contains('collapsed'))
+      }
+    }
+
+    // Check initially
+    checkNavState()
+
+    // Listen for changes
+    const observer = new MutationObserver(checkNavState)
+    const nav = document.querySelector('.side-nav')
+    if (nav) {
+      observer.observe(nav, { attributes: true, attributeFilter: ['class'] })
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <SideNavigation />
-      <main className="container">
+      <main className={`container ${isNavCollapsed ? 'nav-collapsed' : ''}`}>
       <section className="business-card">
         <div className="card-content">
           <div className="card-left">

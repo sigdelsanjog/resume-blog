@@ -1,11 +1,32 @@
 import SideNavigation from '../components/SideNavigation'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 export default function Resume() {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false)
+
+  useEffect(() => {
+    const checkNavState = () => {
+      const nav = document.querySelector('.side-nav')
+      if (nav) {
+        setIsNavCollapsed(nav.classList.contains('collapsed'))
+      }
+    }
+
+    checkNavState()
+    const observer = new MutationObserver(checkNavState)
+    const nav = document.querySelector('.side-nav')
+    if (nav) {
+      observer.observe(nav, { attributes: true, attributeFilter: ['class'] })
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <SideNavigation />
-      <main className="container resume-container">
+      <main className={`resume-container ${isNavCollapsed ? 'nav-collapsed' : ''}`}>
         <header className="resume-header">
           <div className="resume-title">
             <h1>Sanjog Sigdel</h1>

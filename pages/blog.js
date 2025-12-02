@@ -1,6 +1,7 @@
 import SideNavigation from '../components/SideNavigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 const BlogPost = ({ title, excerpt, date, thumbnail, slug }) => (
   <article className="blog-post">
@@ -27,6 +28,25 @@ const BlogPost = ({ title, excerpt, date, thumbnail, slug }) => (
 )
 
 export default function Blog() {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false)
+
+  useEffect(() => {
+    const checkNavState = () => {
+      const nav = document.querySelector('.side-nav')
+      if (nav) {
+        setIsNavCollapsed(nav.classList.contains('collapsed'))
+      }
+    }
+
+    checkNavState()
+    const observer = new MutationObserver(checkNavState)
+    const nav = document.querySelector('.side-nav')
+    if (nav) {
+      observer.observe(nav, { attributes: true, attributeFilter: ['class'] })
+    }
+
+    return () => observer.disconnect()
+  }, [])
   // Sample blog posts - replace with your actual data source
   const blogPosts = [
     {
@@ -62,7 +82,7 @@ export default function Blog() {
   return (
     <>
       <SideNavigation />
-      <main className="container blog-container">
+      <main className={`blog-container ${isNavCollapsed ? 'nav-collapsed' : ''}`}>
         <header className="blog-header">
           <h1>Blog</h1>
           <p>Thoughts on research, technology, and academia</p>

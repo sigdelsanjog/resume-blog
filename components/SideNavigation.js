@@ -1,11 +1,15 @@
-import { useState } from 'react'
-import { FaLinkedin, FaFacebook, FaEnvelope, FaGraduationCap, FaFlask, FaBars, FaTimes, FaBlog } from 'react-icons/fa'
+import { useState, useContext } from 'react'
+import { FaLinkedin, FaFacebook, FaEnvelope, FaGraduationCap, FaFlask, FaBars, FaTimes, FaBlog, FaChevronLeft, FaChevronRight, FaSun, FaMoon } from 'react-icons/fa'
 import Link from 'next/link'
+import { ThemeContext } from '../contexts/ThemeContext'
 
 const SideNavigation = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const toggleNav = () => setIsOpen(!isOpen)
+  const toggleCollapse = () => setIsCollapsed(!isCollapsed)
 
   const socialLinks = [
     {
@@ -52,25 +56,44 @@ const SideNavigation = () => {
       </button>
 
       {/* Side Navigation */}
-      <nav className={`side-nav ${isOpen ? 'open' : ''}`}>
+      <nav className={`side-nav ${isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
         <div className="nav-content">
           <div className="nav-header">
-            <h3>Sanjog Sigdel</h3>
+            {!isCollapsed && <h3>Sanjog Sigdel</h3>}
+            <div className="nav-controls">
+              <button 
+                className="theme-toggle"
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+              >
+                {theme === 'light' ? <FaMoon /> : <FaSun />}
+              </button>
+              <button 
+                className="collapse-toggle"
+                onClick={toggleCollapse}
+                aria-label="Toggle sidebar"
+                title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              >
+                {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
+              </button>
+            </div>
           </div>
           
           <div className="nav-section">
-            <h4>Navigation</h4>
+            {!isCollapsed && <h4>Navigation</h4>}
             <Link href="/" className="nav-link" onClick={() => setIsOpen(false)}>
-              <span>Home</span>
+              <span className="nav-icon">🏠</span>
+              {!isCollapsed && <span>Home</span>}
             </Link>
             <Link href="/blog" className="nav-link" onClick={() => setIsOpen(false)}>
-              <FaBlog />
-              <span>Blog</span>
+              <FaBlog className="nav-icon" />
+              {!isCollapsed && <span>Blog</span>}
             </Link>
           </div>
 
           <div className="nav-section">
-            <h4>Connect</h4>
+            {!isCollapsed && <h4>Connect</h4>}
             <div className="social-links">
               {socialLinks.map((link) => (
                 <a
@@ -83,8 +106,8 @@ const SideNavigation = () => {
                   title={link.name}
                   onClick={() => setIsOpen(false)}
                 >
-                  {link.icon}
-                  <span>{link.name}</span>
+                  <span className="nav-icon">{link.icon}</span>
+                  {!isCollapsed && <span>{link.name}</span>}
                 </a>
               ))}
             </div>
