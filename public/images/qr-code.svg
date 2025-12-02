@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- QR Code pattern for sigdelsanjog.com.np -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Corner squares -->
+  <rect x="4" y="4" width="20" height="20" fill="black"/>
+  <rect x="8" y="8" width="12" height="12" fill="white"/>
+  <rect x="12" y="12" width="4" height="4" fill="black"/>
+  
+  <rect x="56" y="4" width="20" height="20" fill="black"/>
+  <rect x="60" y="8" width="12" height="12" fill="white"/>
+  <rect x="64" y="12" width="4" height="4" fill="black"/>
+  
+  <rect x="4" y="56" width="20" height="20" fill="black"/>
+  <rect x="8" y="60" width="12" height="12" fill="white"/>
+  <rect x="12" y="64" width="4" height="4" fill="black"/>
+  
+  <!-- Data pattern (simplified) -->
+  <rect x="32" y="8" width="4" height="4" fill="black"/>
+  <rect x="40" y="8" width="4" height="4" fill="black"/>
+  <rect x="32" y="16" width="4" height="4" fill="black"/>
+  <rect x="44" y="16" width="4" height="4" fill="black"/>
+  
+  <rect x="8" y="32" width="4" height="4" fill="black"/>
+  <rect x="16" y="32" width="4" height="4" fill="black"/>
+  <rect x="8" y="40" width="4" height="4" fill="black"/>
+  <rect x="20" y="40" width="4" height="4" fill="black"/>
+  
+  <rect x="32" y="32" width="4" height="4" fill="black"/>
+  <rect x="40" y="32" width="4" height="4" fill="black"/>
+  <rect x="36" y="40" width="4" height="4" fill="black"/>
+  <rect x="44" y="40" width="4" height="4" fill="black"/>
+  
+  <rect x="56" y="32" width="4" height="4" fill="black"/>
+  <rect x="64" y="32" width="4" height="4" fill="black"/>
+  <rect x="60" y="40" width="4" height="4" fill="black"/>
+  <rect x="68" y="40" width="4" height="4" fill="black"/>
+  
+  <rect x="32" y="56" width="4" height="4" fill="black"/>
+  <rect x="40" y="56" width="4" height="4" fill="black"/>
+  <rect x="36" y="64" width="4" height="4" fill="black"/>
+  <rect x="44" y="64" width="4" height="4" fill="black"/>
+  
+  <rect x="56" y="56" width="4" height="4" fill="black"/>
+  <rect x="64" y="56" width="4" height="4" fill="black"/>
+  <rect x="60" y="64" width="4" height="4" fill="black"/>
+  <rect x="68" y="64" width="4" height="4" fill="black"/>
+</svg>
