@@ -244,7 +244,345 @@ body {
    display: none;
 }
 
-/* Business Card Styles */
+/* Top Section Layout */
+.top-section {
+   display: flex;
+   gap: 24px;
+   margin-bottom: 32px;
+   min-height: 400px;
+}
+
+.business-card-section {
+   flex: 1;
+   min-width: 300px;
+}
+
+.navigation-section {
+   flex: 2;
+   background: var(--card);
+   border-radius: 16px;
+   padding: 24px;
+   box-shadow: 0 6px 24px rgba(15, 23, 36, 0.08);
+}
+
+.navigation-section h3 {
+   margin: 0 0 24px 0;
+   font-size: 24px;
+   color: var(--text);
+   text-align: center;
+}
+
+.nav-buttons {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 16px;
+}
+
+.nav-button {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   padding: 20px;
+   background: var(--bg);
+   border: 2px solid #e2e8f0;
+   border-radius: 12px;
+   text-decoration: none;
+   color: var(--text);
+   transition: all 0.3s ease;
+   cursor: pointer;
+   font: inherit;
+}
+
+.nav-button:hover {
+   border-color: var(--accent);
+   transform: translateY(-2px);
+   box-shadow: 0 8px 24px rgba(11, 116, 222, 0.15);
+}
+
+.nav-button.active {
+   background: linear-gradient(135deg, var(--accent), #1e40af);
+   color: white;
+   border-color: var(--accent);
+}
+
+.nav-button.active:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 12px 32px rgba(11, 116, 222, 0.25);
+}
+
+/* Bottom Section - Dynamic Content */
+.bottom-section {
+   margin-top: 32px;
+}
+
+.content-section {
+   background: var(--card);
+   border-radius: 16px;
+   padding: 32px;
+   box-shadow: 0 6px 24px rgba(15, 23, 36, 0.08);
+   min-height: 400px;
+}
+
+.content-section h2 {
+   margin: 0 0 24px 0;
+   font-size: 28px;
+   color: var(--accent);
+   border-bottom: 2px solid var(--accent);
+   padding-bottom: 12px;
+}
+
+/* Blog Content Styles */
+.blog-grid-inline {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 20px;
+}
+
+.blog-post-inline {
+   background: var(--bg);
+   border-radius: 12px;
+   overflow: hidden;
+   border: 1px solid rgba(226, 232, 240, 0.3);
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-post-inline:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 8px 20px rgba(15, 23, 36, 0.1);
+}
+
+.blog-thumbnail-inline {
+   width: 100%;
+   height: 120px;
+   overflow: hidden;
+}
+
+.blog-content-inline {
+   padding: 16px;
+}
+
+.blog-content-inline h3 {
+   margin: 0 0 8px 0;
+   font-size: 16px;
+   color: var(--text);
+}
+
+.blog-content-inline .blog-excerpt {
+   font-size: 14px;
+   color: #64748b;
+   line-height: 1.4;
+   margin-bottom: 12px;
+}
+
+.blog-meta {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-size: 12px;
+}
+
+.blog-meta time {
+   color: #94a3b8;
+}
+
+.read-more {
+   color: var(--accent);
+   text-decoration: none;
+   font-weight: 500;
+}
+
+/* Resume Content Styles */
+.resume-content-inline {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 24px;
+}
+
+.resume-section-inline {
+   background: var(--bg);
+   padding: 20px;
+   border-radius: 12px;
+   border: 1px solid rgba(226, 232, 240, 0.3);
+}
+
+.resume-section-inline h3 {
+   margin: 0 0 16px 0;
+   color: var(--accent);
+   font-size: 18px;
+   border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+   padding-bottom: 8px;
+}
+
+.resume-item-inline {
+   margin-bottom: 16px;
+}
+
+.resume-item-inline h4 {
+   margin: 0 0 4px 0;
+   font-size: 16px;
+   color: var(--text);
+}
+
+.resume-item-inline .date {
+   font-size: 12px;
+   color: #64748b;
+   background: rgba(11, 116, 222, 0.1);
+   padding: 2px 6px;
+   border-radius: 4px;
+   margin-bottom: 4px;
+   display: inline-block;
+}
+
+.resume-item-inline p {
+   margin: 4px 0 0 0;
+   color: #64748b;
+   font-size: 14px;
+}
+
+.research-areas-inline {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 8px;
+}
+
+.research-tag {
+   background: var(--accent);
+   color: white;
+   padding: 6px 12px;
+   border-radius: 20px;
+   font-size: 12px;
+   font-weight: 500;
+}
+
+/* Research Papers Styles */
+.research-papers {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+}
+
+.research-paper {
+   background: var(--bg);
+   padding: 20px;
+   border-radius: 12px;
+   border: 1px solid rgba(226, 232, 240, 0.3);
+   transition: transform 0.2s ease;
+}
+
+.research-paper:hover {
+   transform: translateX(4px);
+   border-color: var(--accent);
+}
+
+.paper-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   gap: 16px;
+   margin-bottom: 8px;
+}
+
+.paper-header h3 {
+   margin: 0;
+   font-size: 16px;
+   color: var(--text);
+   flex: 1;
+}
+
+.paper-type {
+   font-size: 12px;
+   padding: 4px 8px;
+   border-radius: 4px;
+   font-weight: 500;
+   white-space: nowrap;
+}
+
+.paper-type.conference {
+   background: rgba(34, 197, 94, 0.1);
+   color: #22c55e;
+}
+
+.paper-type.journal {
+   background: rgba(59, 130, 246, 0.1);
+   color: #3b82f6;
+}
+
+.paper-authors {
+   margin: 4px 0;
+   font-size: 14px;
+   color: var(--accent);
+   font-weight: 500;
+}
+
+.paper-venue {
+   margin: 4px 0 0 0;
+   font-size: 14px;
+   color: #64748b;
+   font-style: italic;
+}
+
+/* Contact Content Styles */
+.contact-content {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 32px;
+}
+
+.contact-info-section h3,
+.social-links-section h3 {
+   margin: 0 0 16px 0;
+   color: var(--accent);
+   font-size: 18px;
+}
+
+.contact-details {
+   background: var(--bg);
+   padding: 20px;
+   border-radius: 12px;
+   border: 1px solid rgba(226, 232, 240, 0.3);
+}
+
+.contact-details p {
+   margin: 12px 0;
+   font-size: 14px;
+   color: var(--text);
+}
+
+.social-buttons {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+.social-button {
+   padding: 12px 16px;
+   border-radius: 8px;
+   text-decoration: none;
+   font-weight: 500;
+   text-align: center;
+   transition: all 0.2s ease;
+}
+
+.social-button.linkedin {
+   background: #0077b5;
+   color: white;
+}
+
+.social-button.scholar {
+   background: #4285f4;
+   color: white;
+}
+
+.social-button.email {
+   background: #ea4335;
+   color: white;
+}
+
+.social-button:hover {
+   transform: translateY(-2px);
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 .business-card {
    background: var(--card);
    border-radius: 16px;
@@ -744,7 +1082,24 @@ footer {
       text-align: center;
    }
 
+   .top-section {
+      flex-direction: column;
+      gap: 16px;
+   }
+
    .nav-buttons {
+      grid-template-columns: 1fr;
+   }
+
+   .blog-grid-inline {
+      grid-template-columns: 1fr;
+   }
+
+   .resume-content-inline {
+      grid-template-columns: 1fr;
+   }
+
+   .contact-content {
       grid-template-columns: 1fr;
    }
 
