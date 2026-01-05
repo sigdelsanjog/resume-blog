@@ -1,92 +1,64 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import SideNavigation from '../components/SideNavigation'
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import SideNavigation from "../components/SideNavigation";
+import { allBlogPosts } from "../data/blog";
 
 export default function Home() {
-  const [isNavCollapsed, setIsNavCollapsed] = useState(false)
-  const [activeSection, setActiveSection] = useState('blog') // Default to showing recent blogs
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  const [activeSection, setActiveSection] = useState("blog"); // Default to showing recent blogs
 
   useEffect(() => {
     const checkNavState = () => {
-      const nav = document.querySelector('.side-nav')
+      const nav = document.querySelector(".side-nav");
       if (nav) {
-        setIsNavCollapsed(nav.classList.contains('collapsed'))
+        setIsNavCollapsed(nav.classList.contains("collapsed"));
       }
-    }
+    };
 
     // Check initially
-    checkNavState()
+    checkNavState();
 
     // Listen for changes
-    const observer = new MutationObserver(checkNavState)
-    const nav = document.querySelector('.side-nav')
+    const observer = new MutationObserver(checkNavState);
+    const nav = document.querySelector(".side-nav");
     if (nav) {
-      observer.observe(nav, { attributes: true, attributeFilter: ['class'] })
+      observer.observe(nav, { attributes: true, attributeFilter: ["class"] });
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
-  // Sample blog posts data
-  const blogPosts = [
-    {
-      slug: 'neuroinformatics-research',
-      title: 'Advances in Neuroinformatics Research',
-      excerpt: 'Exploring the latest developments in brain-computer interfaces and their applications in healthcare.',
-      date: '2024-11-15',
-      thumbnail: '/images/blog-neuro.svg'
-    },
-    {
-      slug: 'ai-healthcare',
-      title: 'AI Applications in Healthcare Data Analytics',
-      excerpt: 'How artificial intelligence is transforming healthcare data analysis and patient outcomes.',
-      date: '2024-10-28',
-      thumbnail: '/images/blog-ai.svg'
-    },
-    {
-      slug: 'crisis-informatics',
-      title: 'Crisis Information Management Systems',
-      excerpt: 'Building resilient information systems for crisis response and disaster management.',
-      date: '2024-09-20',
-      thumbnail: '/images/blog-crisis.svg'
-    },
-    {
-      slug: 'hpc-computing',
-      title: 'High Performance Computing for Research',
-      excerpt: 'Leveraging HPC resources for complex computational problems in academic research.',
-      date: '2024-08-10',
-      thumbnail: '/images/blog-hpc.svg'
-    }
-  ]
+  // Use imported blog posts data
+  const blogPosts = allBlogPosts;
 
   const researchPapers = [
     {
-      title: 'Brain-Computer Interface for Healthcare Applications',
-      authors: 'S. Sigdel, et al.',
-      venue: 'International Conference on Neuroinformatics 2024',
-      year: '2024',
-      type: 'Conference'
+      title: "Brain-Computer Interface for Healthcare Applications",
+      authors: "S. Sigdel, et al.",
+      venue: "International Conference on Neuroinformatics 2024",
+      year: "2024",
+      type: "Conference",
     },
     {
-      title: 'Crisis Information Systems: A Comprehensive Review',
-      authors: 'S. Sigdel, A. Kumar',
-      venue: 'Journal of Crisis Informatics',
-      year: '2023',
-      type: 'Journal'
+      title: "Crisis Information Systems: A Comprehensive Review",
+      authors: "S. Sigdel, A. Kumar",
+      venue: "Journal of Crisis Informatics",
+      year: "2023",
+      type: "Journal",
     },
     {
-      title: 'High Performance Computing in Health Informatics',
-      authors: 'S. Sigdel',
-      venue: 'HPC Healthcare Symposium',
-      year: '2023',
-      type: 'Conference'
-    }
-  ]
+      title: "High Performance Computing in Health Informatics",
+      authors: "S. Sigdel",
+      venue: "HPC Healthcare Symposium",
+      year: "2023",
+      type: "Conference",
+    },
+  ];
 
   const renderContent = () => {
-    switch(activeSection) {
-      case 'blog':
+    switch (activeSection) {
+      case "blog":
         return (
           <div className="content-section">
             <h2>Recent Blog Posts</h2>
@@ -94,12 +66,12 @@ export default function Home() {
               {blogPosts.map((post) => (
                 <article key={post.slug} className="blog-post-inline">
                   <div className="blog-thumbnail-inline">
-                    <Image 
-                      src={post.thumbnail} 
+                    <Image
+                      src={post.thumbnail}
                       alt={post.title}
                       width={200}
                       height={120}
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: "cover" }}
                     />
                   </div>
                   <div className="blog-content-inline">
@@ -107,16 +79,18 @@ export default function Home() {
                     <p className="blog-excerpt">{post.excerpt}</p>
                     <div className="blog-meta">
                       <time>{new Date(post.date).toLocaleDateString()}</time>
-                      <Link href={`/blog/${post.slug}`} className="read-more">Read More</Link>
+                      <Link href={`/blog/${post.slug}`} className="read-more">
+                        Read More
+                      </Link>
                     </div>
                   </div>
                 </article>
               ))}
             </div>
           </div>
-        )
-      
-      case 'resume':
+        );
+
+      case "resume":
         return (
           <div className="content-section">
             <h2>Resume</h2>
@@ -124,7 +98,9 @@ export default function Home() {
               <div className="resume-section-inline">
                 <h3>Education</h3>
                 <div className="resume-item-inline">
-                  <h4>Master of Technology in Information Technology (MTech. IT)</h4>
+                  <h4>
+                    Master of Technology in Information Technology (MTech. IT)
+                  </h4>
                   <span className="date">2020</span>
                   <p>Kathmandu University, Nepal</p>
                 </div>
@@ -135,7 +111,10 @@ export default function Home() {
                 <div className="resume-item-inline">
                   <h4>Lecturer</h4>
                   <span className="date">Present</span>
-                  <p>Department of Computer Science and Engineering, Kathmandu University</p>
+                  <p>
+                    Department of Computer Science and Engineering, Kathmandu
+                    University
+                  </p>
                 </div>
                 <div className="resume-item-inline">
                   <h4>Software Engineer & Project Manager</h4>
@@ -148,18 +127,24 @@ export default function Home() {
                 <h3>Research Interests</h3>
                 <div className="research-areas-inline">
                   <span className="research-tag">🧠 Neuroinformatics</span>
-                  <span className="research-tag">🔌 Brain Computer Interface</span>
-                  <span className="research-tag">🤖 Artificial Intelligence</span>
-                  <span className="research-tag">⚡ High Performance Computing</span>
+                  <span className="research-tag">
+                    🔌 Brain Computer Interface
+                  </span>
+                  <span className="research-tag">
+                    🤖 Artificial Intelligence
+                  </span>
+                  <span className="research-tag">
+                    ⚡ High Performance Computing
+                  </span>
                   <span className="research-tag">🏥 Health Informatics</span>
                   <span className="research-tag">🚨 Crisis Informatics</span>
                 </div>
               </div>
             </div>
           </div>
-        )
-      
-      case 'research':
+        );
+
+      case "research":
         return (
           <div className="content-section">
             <h2>Research Publications</h2>
@@ -168,17 +153,21 @@ export default function Home() {
                 <article key={index} className="research-paper">
                   <div className="paper-header">
                     <h3>{paper.title}</h3>
-                    <span className={`paper-type ${paper.type.toLowerCase()}`}>{paper.type}</span>
+                    <span className={`paper-type ${paper.type.toLowerCase()}`}>
+                      {paper.type}
+                    </span>
                   </div>
                   <p className="paper-authors">{paper.authors}</p>
-                  <p className="paper-venue">{paper.venue} ({paper.year})</p>
+                  <p className="paper-venue">
+                    {paper.venue} ({paper.year})
+                  </p>
                 </article>
               ))}
             </div>
           </div>
-        )
-      
-      case 'contact':
+        );
+
+      case "contact":
         return (
           <div className="content-section">
             <h2>Get In Touch</h2>
@@ -186,33 +175,57 @@ export default function Home() {
               <div className="contact-info-section">
                 <h3>Contact Information</h3>
                 <div className="contact-details">
-                  <p>📧 <strong>Email:</strong> sanjog.sigdel@ku.edu.np</p>
-                  <p>📍 <strong>Location:</strong> Dhulikhel, Kavre, Nepal</p>
-                  <p>🏫 <strong>Office:</strong> Department of Computer Science and Engineering</p>
-                  <p>🌐 <strong>Website:</strong> sigdelsanjog.com.np</p>
+                  <p>
+                    📧 <strong>Email:</strong> sanjog.sigdel@ku.edu.np
+                  </p>
+                  <p>
+                    📍 <strong>Location:</strong> Dhulikhel, Kavre, Nepal
+                  </p>
+                  <p>
+                    🏫 <strong>Office:</strong> Department of Computer Science
+                    and Engineering
+                  </p>
+                  <p>
+                    🌐 <strong>Website:</strong> sigdelsanjog.com.np
+                  </p>
                 </div>
               </div>
               <div className="social-links-section">
                 <h3>Connect Online</h3>
                 <div className="social-buttons">
-                  <a href="https://linkedin.com/in/sanjog-sigdel" className="social-button linkedin">LinkedIn</a>
-                  <a href="https://scholar.google.com/citations?user=YOUR_ID" className="social-button scholar">Google Scholar</a>
-                  <a href="mailto:sanjog.sigdel@ku.edu.np" className="social-button email">Email</a>
+                  <a
+                    href="https://linkedin.com/in/sanjog-sigdel"
+                    className="social-button linkedin"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://scholar.google.com/citations?user=YOUR_ID"
+                    className="social-button scholar"
+                  >
+                    Google Scholar
+                  </a>
+                  <a
+                    href="mailto:sanjog.sigdel@ku.edu.np"
+                    className="social-button email"
+                  >
+                    Email
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        )
-      
+        );
+
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <>
       <SideNavigation />
-      <main className={`container ${isNavCollapsed ? 'nav-collapsed' : ''}`}>
+      <main className={`container ${isNavCollapsed ? "nav-collapsed" : ""}`}>
         {/* Top Section: 1/3 Business Card + 2/3 Navigation */}
         <section className="top-section">
           <div className="business-card-section">
@@ -220,10 +233,20 @@ export default function Home() {
               <div className="card-content">
                 <div className="card-left">
                   <div className="photo">
-                    <Image src="/images/Sanjog.jpeg" alt="Profile" width={120} height={120} />
+                    <Image
+                      src="/images/Sanjog.jpeg"
+                      alt="Profile"
+                      width={120}
+                      height={120}
+                    />
                   </div>
                   <div className="qr-code">
-                    <Image src="/images/qr-code.svg" alt="QR Code" width={80} height={80} />
+                    <Image
+                      src="/images/qr-code.svg"
+                      alt="QR Code"
+                      width={80}
+                      height={80}
+                    />
                     <span>sigdelsanjog.com.np</span>
                   </div>
                 </div>
@@ -231,14 +254,28 @@ export default function Home() {
                   <div className="card-info">
                     <h1>Sanjog Sigdel</h1>
                     <h2>Lecturer</h2>
-                    <p className="affiliation">Department of Computer Science and Engineering<br/>Kathmandu University</p>
+                    <p className="affiliation">
+                      Department of Computer Science and Engineering
+                      <br />
+                      Kathmandu University
+                    </p>
                     <div className="contact-info">
                       <p>📧 sanjog.sigdel@ku.edu.np</p>
                       <p>📍 Dhulikhel, Kavre</p>
                     </div>
                     <div className="social-links-card">
-                      <a href="https://linkedin.com/in/sanjog-sigdel" target="_blank">LinkedIn</a>
-                      <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Scholar</a>
+                      <a
+                        href="https://linkedin.com/in/sanjog-sigdel"
+                        target="_blank"
+                      >
+                        LinkedIn
+                      </a>
+                      <a
+                        href="https://scholar.google.com/citations?user=YOUR_ID"
+                        target="_blank"
+                      >
+                        Scholar
+                      </a>
                       <a href="mailto:sanjog.sigdel@ku.edu.np">Email</a>
                     </div>
                   </div>
@@ -246,13 +283,15 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           <div className="navigation-section">
             <h3>Explore</h3>
             <div className="nav-buttons">
-              <button 
-                onClick={() => setActiveSection('blog')} 
-                className={`nav-button ${activeSection === 'blog' ? 'active' : ''}`}
+              <button
+                onClick={() => setActiveSection("blog")}
+                className={`nav-button ${
+                  activeSection === "blog" ? "active" : ""
+                }`}
               >
                 <div className="button-icon">📝</div>
                 <div className="button-content">
@@ -260,9 +299,11 @@ export default function Home() {
                   <p>Research insights and thoughts</p>
                 </div>
               </button>
-              <button 
-                onClick={() => setActiveSection('resume')} 
-                className={`nav-button ${activeSection === 'resume' ? 'active' : ''}`}
+              <button
+                onClick={() => setActiveSection("resume")}
+                className={`nav-button ${
+                  activeSection === "resume" ? "active" : ""
+                }`}
               >
                 <div className="button-icon">📄</div>
                 <div className="button-content">
@@ -270,9 +311,11 @@ export default function Home() {
                   <p>Academic and professional background</p>
                 </div>
               </button>
-              <button 
-                onClick={() => setActiveSection('research')} 
-                className={`nav-button ${activeSection === 'research' ? 'active' : ''}`}
+              <button
+                onClick={() => setActiveSection("research")}
+                className={`nav-button ${
+                  activeSection === "research" ? "active" : ""
+                }`}
               >
                 <div className="button-icon">🔬</div>
                 <div className="button-content">
@@ -280,9 +323,11 @@ export default function Home() {
                   <p>Publications and projects</p>
                 </div>
               </button>
-              <button 
-                onClick={() => setActiveSection('contact')} 
-                className={`nav-button ${activeSection === 'contact' ? 'active' : ''}`}
+              <button
+                onClick={() => setActiveSection("contact")}
+                className={`nav-button ${
+                  activeSection === "contact" ? "active" : ""
+                }`}
               >
                 <div className="button-icon">📞</div>
                 <div className="button-content">
@@ -295,10 +340,8 @@ export default function Home() {
         </section>
 
         {/* Bottom Section: Dynamic Content */}
-        <section className="bottom-section">
-          {renderContent()}
-        </section>
+        <section className="bottom-section">{renderContent()}</section>
       </main>
     </>
-  )
+  );
 }
