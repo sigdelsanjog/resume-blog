@@ -56,6 +56,33 @@ export default function Home() {
     },
   ];
 
+  const navigationItems = [
+    {
+      id: "blog",
+      label: "Blog",
+      description: "Research insights and thoughts",
+      icon: "📝",
+    },
+    {
+      id: "resume",
+      label: "Resume",
+      description: "Academic and professional background",
+      icon: "📄",
+    },
+    {
+      id: "research",
+      label: "Research",
+      description: "Publications and projects",
+      icon: "🔬",
+    },
+    {
+      id: "contact",
+      label: "Contact",
+      description: "Get in touch",
+      icon: "📞",
+    },
+  ];
+
   const renderContent = () => {
     switch (activeSection) {
       case "blog":
@@ -240,7 +267,7 @@ export default function Home() {
                       height={120}
                     />
                   </div>
-                  <div className="qr-code">
+                  {/* <div className="qr-code">
                     <Image
                       src="/images/qr-code.svg"
                       alt="QR Code"
@@ -248,7 +275,7 @@ export default function Home() {
                       height={80}
                     />
                     <span>sigdelsanjog.com.np</span>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="card-right">
                   <div className="card-info">
@@ -265,13 +292,13 @@ export default function Home() {
                     </div>
                     <div className="social-links-card">
                       <a
-                        href="https://linkedin.com/in/sanjog-sigdel"
+                        href="https://linkedin.com/in/sigdelsanjog"
                         target="_blank"
                       >
                         LinkedIn
                       </a>
                       <a
-                        href="https://scholar.google.com/citations?user=YOUR_ID"
+                        href="https://scholar.google.com/citations?hl=en&user=c24maKAAAAAJ"
                         target="_blank"
                       >
                         Scholar
@@ -286,55 +313,26 @@ export default function Home() {
 
           <div className="navigation-section">
             <h3>Explore</h3>
-            <div className="nav-buttons">
-              <button
-                onClick={() => setActiveSection("blog")}
-                className={`nav-button ${
-                  activeSection === "blog" ? "active" : ""
-                }`}
-              >
-                <div className="button-icon">📝</div>
-                <div className="button-content">
-                  <h4>Blog</h4>
-                  <p>Research insights and thoughts</p>
-                </div>
-              </button>
-              <button
-                onClick={() => setActiveSection("resume")}
-                className={`nav-button ${
-                  activeSection === "resume" ? "active" : ""
-                }`}
-              >
-                <div className="button-icon">📄</div>
-                <div className="button-content">
-                  <h4>Resume</h4>
-                  <p>Academic and professional background</p>
-                </div>
-              </button>
-              <button
-                onClick={() => setActiveSection("research")}
-                className={`nav-button ${
-                  activeSection === "research" ? "active" : ""
-                }`}
-              >
-                <div className="button-icon">🔬</div>
-                <div className="button-content">
-                  <h4>Research</h4>
-                  <p>Publications and projects</p>
-                </div>
-              </button>
-              <button
-                onClick={() => setActiveSection("contact")}
-                className={`nav-button ${
-                  activeSection === "contact" ? "active" : ""
-                }`}
-              >
-                <div className="button-icon">📞</div>
-                <div className="button-content">
-                  <h4>Contact</h4>
-                  <p>Get in touch</p>
-                </div>
-              </button>
+            <div className="nav-buttons" role="tablist" aria-label="Explore">
+              {navigationItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveSection(item.id)}
+                  className={`nav-button ${
+                    activeSection === item.id ? "active" : ""
+                  }`}
+                  role="tab"
+                  aria-selected={activeSection === item.id}
+                  title={item.description}
+                >
+                  <span className="button-icon" aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  <span className="button-content">
+                    <h4>{item.label}</h4>
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
         </section>
