@@ -27,8 +27,9 @@ node_modules/*
 *.gz
 .next/
 .next/*
-*.gz
-
+*/*.gz
+**/**/*.gz/*
+**/*.gz/*
 # Next.js build outputs
 out/
 build/
@@ -64,3 +65,4 @@ Thumbs.db
 .turbo
 *.tsbuildinfo
 .next/trace
+.next/cache/webpack/client-development/0.pack.gz

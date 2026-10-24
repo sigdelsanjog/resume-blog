@@ -34,25 +34,119 @@ export default function Home() {
 
   const researchPapers = [
     {
-      title: "Brain-Computer Interface for Healthcare Applications",
-      authors: "S. Sigdel, et al.",
-      venue: "International Conference on Neuroinformatics 2024",
-      year: "2024",
-      type: "Conference",
+      title:
+        "A Bounded Reclaim Actuator for PSI-Guided Compressed Memory: A Controlled Ablation",
+      authors: "A Dhakal, S Sigdel",
+      year: "2026",
+      type: "Preprint",
+      publisher: "Arxiv",
+      journalrank: "",
+      link: "https://arxiv.org/pdf/2608.13689",
     },
     {
-      title: "Crisis Information Systems: A Comprehensive Review",
-      authors: "S. Sigdel, A. Kumar",
-      venue: "Journal of Crisis Informatics",
-      year: "2023",
+      title:
+        "Predicting Tuberculosis Case Counts with Machine Learning Based on Climate and Air Pollution Factors in Nepal",
+      authors: "S Bhandari, RK Mahato, JJ Kaasbøll, S Sigdel, R Bista",
+      year: "2026",
+      type: "Conference",
+      publisher: "Springer Nature",
+      journalrank: "Q3",
+      link: "https://link.springer.com/chapter/10.1007/978-3-032-30982-2_12",
+    },
+    {
+      title:
+        "A hybrid dense convolutional network and fuzzy inference system for pneumonia diagnosis with dynamic symptom tracking",
+      authors: "S Baral, R Bista, S Sigdel, JC Ferreira",
+      year: "2025",
       type: "Journal",
+      publisher: "Plos one",
+      journalrank: "Q1",
+      link: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0334899",
+    },
+
+    {
+      title:
+        "An Artificial Intelligence Driven Semantic Similarity-Based Pipeline for Rapid Literature",
+      authors: "A Dhakal, K Paudel, S Sigdel",
+      year: "2025",
+      type: "Preprint",
+      publisher: "Arxiv",
+      journalrank: "",
+      link: "https://arxiv.org/pdf/2509.15292",
+    },
+
+    {
+      title:
+        "Leveraging Machine Learning for Enhanced Bug Triaging in Open-Source Software Projects",
+      authors: "N Adhikari, R Bista, S Sigdel",
+      year: "2025",
+      type: "Preprint",
+      publisher: "IEEE",
+      journalrank: "",
+      link: "https://ieeexplore.ieee.org/abstract/document/11106424/",
+    },
+
+    {
+      title: "A Study Of Sudoku Solving Algorithms: Backtracking and Heuristic",
+      authors:
+        "A Bhattarai, D Uprety, P Pathak, SN Shrestha, S Narkarmi, S Sigdel",
+      year: "2025",
+      type: "Conference",
+      publisher: "ICANOPT",
+      journalrank: "",
+      link: "https://arxiv.org/abs/2507.09708",
     },
     {
-      title: "High Performance Computing in Health Informatics",
-      authors: "S. Sigdel",
-      venue: "HPC Healthcare Symposium",
-      year: "2023",
+      title:
+        "Enhancing Ethical Reasoning in Tiny Language Models via Fine-Tuning and Multi-Agent Consensus",
+      authors: "S Adhikari, S Sharma, D Lamichhane, S Sigdel",
+      year: "2025",
       type: "Conference",
+      publisher: "NCCI",
+      journalrank: "",
+      link: "https://ncci.ku.edu.np/uploads/archive/1770520274687-Enhancing_Ethical_Reasoning_in_Tiny_Language_Models_via_Fine_Tuning_and_Multi_Agent_Consensus-Sushan-Adhikari.pdf",
+    },
+    {
+      title:
+        "Improving Evaluation Measures Using Ensemble Technique in Diabetes Dataset",
+      authors: "R Bista, B Sharma, S Khanal, S Sigdel, JC Ferreira",
+      year: "2025",
+      type: "Conference",
+      publisher: "Springer",
+      journalrank: "",
+      link: "https://link.springer.com/chapter/10.1007/978-3-031-78946-5_9",
+    },
+    {
+      title:
+        "Gait Analysis for Early Detection of Cardiovascular Diseases Using MPU-6050 Sensor: An Analytical Framework with Data Augmentation Algorithm",
+      authors: "R Bista, S Sigdel, JC Ferreira",
+      year: "2025",
+      type: "Conference",
+      publisher: "Springer Nature",
+      journalrank: "",
+      link: "https://link.springer.com/chapter/10.1007/978-3-031-78946-5_10",
+    },
+    {
+      title:
+        "Designing Crisis Intelligence System for Nepal: Towards Real-Time, Multi-Sectoral, Interoperable Emergency Coordination",
+      authors: "S Sanjog, P Dawadi",
+      year: "2025",
+      type: "Poster",
+      publisher:
+        "International Conference on Science and Technology Information Management System: Practices and Experiences",
+      journalrank: "",
+      link: "https://doi.org/10.13140/RG.2.2.32982.15682",
+    },
+    {
+      title:
+        "Extended Study of Gait Analysis in Identification of Cardiovascular Diseases",
+      authors: "R Bista, S Sigdel, JC Ferreira",
+      year: "2024",
+      type: "Journal",
+      publisher:
+        "International Journal of Computer Information Systems and Industrial Management Applications",
+      journalrank: "",
+      link: "https://www.researchgate.net/profile/Sanjog-Sigdel/publication/380896824_Extended_Study_of_Gait_Analysis_in_Identification_of_Cardiovascular_Diseases/links/665430bd0b0d2845745bec01/Extended-Study-of-Gait-Analysis-in-Identification-of-Cardiovascular-Diseases.pdf",
     },
   ];
 
@@ -179,14 +273,22 @@ export default function Home() {
               {researchPapers.map((paper, index) => (
                 <article key={index} className="research-paper">
                   <div className="paper-header">
-                    <h3>{paper.title}</h3>
+                    <h3>
+                      <a
+                        href={paper.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {paper.title}
+                      </a>
+                    </h3>
                     <span className={`paper-type ${paper.type.toLowerCase()}`}>
                       {paper.type}
                     </span>
                   </div>
                   <p className="paper-authors">{paper.authors}</p>
                   <p className="paper-venue">
-                    {paper.venue} ({paper.year})
+                    ({paper.publisher},{paper.year}), {paper.journalrank}
                   </p>
                 </article>
               ))}
@@ -297,10 +399,12 @@ export default function Home() {
                       >
                         LinkedIn
                       </a>
-                      <a
-                        href="https://scholar.google.com/citations?hl=en&user=c24maKAAAAAJ"
-                        target="_blank"
-                      >
+                      <a href="https://ku.edu.np/contact-detail/sanjog-sigdel">
+                        KU Profile
+                      </a>
+                      <a href="https://github.com/sigdelsanjog">GitHub</a>
+
+                      <a href="https://scholar.google.com/citations?hl=en&user=c24maKAAAAAJ">
                         Scholar
                       </a>
                       <a href="mailto:sanjog.sigdel@ku.edu.np">Email</a>
