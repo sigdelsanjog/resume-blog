@@ -5,7 +5,7 @@ export default {
     "Excited to announce the release of llm-med v0.1.0 on PyPI - a transformer-based language model designed for medical question-answering.",
   date: "2026-01-08",
   author: "Sanjog Sigdel",
-  thumbnail: "/images/blog-neuro.svg",
+  thumbnail: "/images/blog-gptmed.svg",
   content: `
     <h2>🎉 Introducing llm-med</h2>
     
