@@ -57,6 +57,13 @@ export default function Blog() {
       thumbnail: '/images/blog-neuro.svg'
     },
     {
+      slug: 'qwen30B_macbook_m5_pro',
+      title: 'Qwen3-30B: Large Language Models running localhost in Macbook M5 Pro',
+      excerpt: 'A step by step guide to running Qwen3-30B LLM on your local Macbook M5 Pro for research and development.',
+      date: '2026-11-25',
+      thumbnail: '/images/blog-qwen.svg'
+    },
+    {
       slug: 'ai-healthcare',
       title: 'AI Applications in Healthcare Data Analytics',
       excerpt: 'How artificial intelligence is transforming healthcare data analysis and patient outcomes.',

@@ -2,14 +2,28 @@ import welcoming_2026_with_grace from "./welcoming_2026_with_grace";
 import blog_post_2 from "./blog_post_2";
 import blog_post_3 from "./blog_post_3";
 import llm_med_pypi_release from "./llm_med_pypi_release";
+import qwen30B_macbook_m5_pro from "./qwen30B_macbook_m5_pro";
 
 // Export all blog posts as an array
 export const allBlogPosts = [
   llm_med_pypi_release,
   welcoming_2026_with_grace,
-  blog_post_2,
-  blog_post_3,
+  qwen30B_macbook_m5_pro,
   // Additional placeholder posts
+  {
+    slug: "qwen30B_macbook_m5_pro",
+    title: "Qwen3-30B: Large Language Models running localhost in Macbook M5 Pro",
+    excerpt:
+      "A step by step guide to running Qwen3-30B LLM on your local Macbook M5 Pro for research and development.",
+    date: "2026-11-25",
+    author: "Sanjog Sigdel",
+    thumbnail: "/images/blog-crisis.svg",
+    content: `
+      Installation Guide for Qwen3 30B Model with LM Studio and VS Code.
+    This file contains step-by-step instructions to set up the Qwen3 30B parameter model
+ from LM Studio and configure it for use with VS Code Copilot SDK.
+    `,
+  },
   {
     slug: "crisis-informatics",
     title: "Crisis Information Management Systems",
